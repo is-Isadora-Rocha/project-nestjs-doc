@@ -1,12 +1,30 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query, Redirect} from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Query, Redirect, Res} from '@nestjs/common';
 import { CreateCatDto } from './DTO/create-cat.dto';
 import { UpdateCatDto } from './DTO/updateCatDto';
 
 @Controller('cats')
 export class CatsController {
-    @Post()
+    /*@Post()
     create(@Body() createCatDto: CreateCatDto) {
         return 'This actions adds a new cat';
+    }*/
+
+    // Para injetar um objeto de resposta específico, precisamos usar o decorador @Res().
+
+    @Post()
+    create(@Res() res: Response) {
+        res.status(HttpStatus.CREATED).send();
+    }
+
+    @Get()
+    findAll(@Res({ passthrough: true }) res: Response) {
+        res.status(HttpStatus.OK);
+        return [];
+    }
+
+    @Get()
+    findAll(@Res() res: Response) {
+        res.status(HttpStatus.OK).json([]);
     }
 
     /*@Get()
