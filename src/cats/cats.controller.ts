@@ -3,18 +3,20 @@ import { CreateCatDto } from './create-cat.dto';
 
 @Controller('cats')
 export class CatsController {
-    @Post()
+
+    // Não aceita nenhum parâmetro de cliente.
+    /*@Post()
     @Header('Cache-Control', 'none') // cabeçalho de resposta personalizado
     @HttpCode(204)
     create(): string {
         return 'This action adds a new cat';
-    }
-
-    /*
-    @Post()
-    async create(@Body() CreateCatDto: CreateCatDto) {
-        return 'This action adds a new cat';
     } */
+
+    // Adicionado decorador @Body() e DTO
+    @Post()
+    async create(@Body() createCatDto: CreateCatDto) {
+    return 'This action adds a new cat';
+    }   
 
     @Get() //cats
     @Redirect('https://nestjs.com', 301) // redirecionamento, url e statusCode
