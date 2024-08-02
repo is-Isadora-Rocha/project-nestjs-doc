@@ -1,10 +1,14 @@
-import { Controller, Get, Req} from '@nestjs/common';
-import { request } from 'https';
+import { Controller, Get, Post} from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
+    @Post()
+    create(): string {
+        return 'This action adds a new cat';
+    }
+    
     @Get()
-    findAll(@Req() request: Request): string {
+    findAll(): string {
         return 'This action return all cats';
     }
 }
