@@ -22,8 +22,13 @@ export class CatsController {
         return 'This action return all cats';
     }
 
-    @Get('docs') // prefix(cats) + decorador = GET /cats/docs
+    // @Redirect()
+
+    // prefix(cats) + decorador = GET /cats/docs
+    @Get('docs')
+    // direcionado a url = sem nenhum parâmetro de consulta ou valor diferente de 5
     @Redirect('https://docs.nestjs.com', 302)
+    // /docs?version=5, redirecionado a url na condição
     getDocs(@Query('version') version){
         if (version && version === '5') {
             return { url: 'https://docs.nestjs.com/v5/' };
