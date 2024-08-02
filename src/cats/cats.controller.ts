@@ -22,8 +22,6 @@ export class CatsController {
         return 'This action return all cats';
     }
 
-    // @Redirect()
-
     // prefix(cats) + decorador = GET /cats/docs
     @Get('docs')
     // direcionado a url = sem nenhum parâmetro de consulta ou valor diferente de 5
@@ -35,14 +33,14 @@ export class CatsController {
         }
     }
 
-    @Get(':id')
+    /* @Get(':id')
     findOne(@Param() params: any): string {
         console.log(params.id);
-        return 'This action returns a #${params.id} cat';
-    }
-
-    /* @Get(':id')
-    findOne(@Param('id') id: string): string {
-        return 'This action returns a #${id} cat';
+        return `This action returns a #${params.id} cat`;
     } */
+
+    @Get(':id')
+    findOne(@Param('id') id: string): string {
+        return `This action returns a #${id} cat`;
+    }
 }
