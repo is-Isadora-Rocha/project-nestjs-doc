@@ -22,10 +22,10 @@ export class CatsController {
         return [];
     }
 
-    @Get()
+    /*@Get()
     findAll(@Res() res: Response) {
         res.status(HttpStatus.OK).json([]);
-    }
+    }*/
 
     /*@Get()
     findAll(@Query() query: ListAllEntities) {
